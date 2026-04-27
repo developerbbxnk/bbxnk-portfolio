@@ -41,7 +41,6 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-// Typewriter - Only run if element exists (Main Page)
 const words = "Java & Skript Developer";
 let charIdx = 0;
 function type() {
@@ -53,7 +52,6 @@ function type() {
     }
 }
 
-// Reveal Logic
 function reveal() {
     document.querySelectorAll('.reveal').forEach(el => {
         if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
