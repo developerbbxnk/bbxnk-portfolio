@@ -1,0 +1,112 @@
+:root {
+    --bg: #010409;
+    --accent: #0077ff;
+    --text: #f0f6fc;
+    --text-dim: #8b949e;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+#canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* Buttons */
+.header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-btn, .why-me-btn {
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.main-btn {
+    padding: 16px 40px;
+    background: var(--accent);
+    color: white;
+    border-radius: 14px;
+    font-weight: 800;
+    box-shadow: 0 10px 30px -10px rgba(0, 119, 255, 0.5);
+}
+
+.why-me-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid var(--glass-border);
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.why-me-btn:hover {
+    border-color: var(--accent);
+    background: rgba(0, 119, 255, 0.1);
+}
+
+/* HEARTBEAT GLOW CARD (The whole page content) */
+.heartbeat-card {
+    background: rgba(10, 15, 30, 0.8);
+    border: 1px solid var(--glass-border);
+    padding: 60px 40px;
+    border-radius: 40px;
+    max-width: 650px;
+    margin: 50px auto;
+    text-align: left;
+    backdrop-filter: blur(15px);
+    /* The Breathing Glow Effect */
+    animation: breathingGlow 3s ease-in-out infinite;
+}
+
+@keyframes breathingGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(0, 119, 255, 0.2); border-color: rgba(0, 119, 255, 0.2); }
+    50% { box-shadow: 0 0 60px rgba(0, 119, 255, 0.6); border-color: rgba(0, 119, 255, 0.8); }
+}
+
+.modal-title { font-size: 2.5rem; margin-bottom: 30px; color: var(--accent); font-weight: 800; }
+.why-list { list-style: none; }
+.why-list li { margin-bottom: 20px; padding-left: 35px; position: relative; font-weight: 600; font-size: 1.1rem; line-height: 1.5; }
+.why-list li::before { content: '✦'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+
+/* Grid Styles (Same as before) */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 50px; }
+.card { background: var(--glass); border: 1px solid var(--glass-border); padding: 40px 20px; border-radius: 28px; text-decoration: none; color: inherit; backdrop-filter: blur(10px); transition: 0.4s; display: flex; flex-direction: column; align-items: center; }
+.card:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(255,255,255,0.06); }
+.card-icon { width: 60px; height: 60px; background: var(--accent); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 20px; font-size: 1.4rem; }
+.status-tag { color: #ff4d4d; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; margin-top: 10px; background: rgba(255,77,77,0.1); padding: 4px 10px; border-radius: 10px; }
+
+/* Existing Header/Typwriter/Cursor styles from previous code... */
+h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; }
+.subtitle { color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; height: 1.5em; }
+.mc-head { width: 110px; border-radius: 20px; filter: drop-shadow(0 0 20px rgba(0, 119, 255, 0.3)); border: 1px solid var(--glass-border); margin-bottom: 20px; }
+.cursor { animation: blink 1s infinite; color: var(--accent); }
+@keyframes blink { 50% { opacity: 0; } }
